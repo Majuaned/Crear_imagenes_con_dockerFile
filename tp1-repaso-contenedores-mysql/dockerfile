@@ -1,0 +1,30 @@
+FROM mysql:debian
+
+# Configura variables de entorno para la instalación no interactiva de MySQL
+# ENV MYSQL_ROOT_PASSWORD=root1
+# ENV MYSQL_DATABASE=prueba
+ENV MYSQL_ROOT_PASSWORD=root1
+ENV MYSQL_DATABASE=prueba
+ENV MYSQL_PASSWORD=root1
+
+# # Exponer el puerto de MySQL
+EXPOSE 3306
+
+# # Incluye el archivo .sql en el contenedor
+COPY datos.sql /docker-entrypoint-initdb.d/
+
+# # Configura el directorio de volúmenes para la persistencia
+VOLUME /var/lib/mysql
+
+#Comando para crear la imágen determinada en el dockerfile
+#docker build -t imagentp1-mysql .
+
+#Comando para crear y levantar el contenedor:
+#docker run -d --name contenedor-mysql1 -p3306:3306 imagentp1-mysql
+
+
+
+
+
+
+

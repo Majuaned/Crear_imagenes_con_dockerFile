@@ -1,0 +1,15 @@
+apt install nodejs npm
+
+Tenía problemas de autenticación de mysql, por lo q se utilizaron dentro del contenedor de mysql los siguientes comandos:
+1. Se entra a la base de datos
+    mysql -p
+aca me pide el pass q es root1
+----------------------------------
+Se entra a mysql native password y se copia el comando:
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY '<password>';
+
+del cual se modifica el localhost y se le coloca % q significa q se pueda acceder desde cualquier dirección. Y el password por el que corresponde, en este caso root1
+ALTER USER 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root1';
+
+Luego se coloca la siguiente línea para actualizar los privilegios:
+flush privileges
